@@ -41,6 +41,9 @@ resources :categories, only: [:index, :create, :show, :update, :destroy] do
 resources :recipes, only: [:index, :create, :show, :update, :destroy] do
  end
 
+resources :user_ratings, only: [:create] do
+ end
+
   end
 
   # jitera-anchor-dont-touch: webhooks

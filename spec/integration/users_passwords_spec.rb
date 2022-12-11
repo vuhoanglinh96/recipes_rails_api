@@ -18,7 +18,7 @@ describe 'User change password API' do
 
       let(:resource_owner) { create(:user) }
       let(:token) { create(:access_token, resource_owner: resource_owner).token }
-      let(:Authorization) { "Bearer #{token}" }
+      let(:authorization) { "Bearer #{token}" }
 
       response '200', 'Password updated' do
         examples 'application/json' => {

@@ -67,7 +67,7 @@ RSpec.describe 'api/recipes', type: :request do
 
         let(:resource_owner) { create(:user) }
         let(:token) { create(:access_token, resource_owner: resource_owner).token }
-        let(:Authorization) { "Bearer #{token}" }
+        let(:authorization) { "Bearer #{token}" }
         let(:params) {}
         let(:id) { create(:recipe).id }
 
@@ -173,7 +173,7 @@ RSpec.describe 'api/recipes', type: :request do
 
         let(:resource_owner) { create(:user) }
         let(:token) { create(:access_token, resource_owner: resource_owner).token }
-        let(:Authorization) { "Bearer #{token}" }
+        let(:authorization) { "Bearer #{token}" }
         let(:id) { create(:recipe).id }
 
         let(:params) {}
@@ -234,6 +234,23 @@ RSpec.describe 'api/recipes', type: :request do
     }
   ],
 
+            'user_ratings' =>
+  [
+    {
+
+      'id' => 'integer',
+
+      'created_at' => 'datetime',
+
+      'updated_at' => 'datetime',
+
+      'user_id' => 'foreign_key',
+
+      'star' => 'integer'
+
+    }
+  ],
+
             'user_id' => 'foreign_key'
 
           },
@@ -244,7 +261,7 @@ RSpec.describe 'api/recipes', type: :request do
 
         let(:resource_owner) { create(:user) }
         let(:token) { create(:access_token, resource_owner: resource_owner).token }
-        let(:Authorization) { "Bearer #{token}" }
+        let(:authorization) { "Bearer #{token}" }
         let(:params) {}
         let(:id) { create(:recipe).id }
 
@@ -460,7 +477,7 @@ RSpec.describe 'api/recipes', type: :request do
 
         let(:resource_owner) { create(:user) }
         let(:token) { create(:access_token, resource_owner: resource_owner).token }
-        let(:Authorization) { "Bearer #{token}" }
+        let(:authorization) { "Bearer #{token}" }
         let(:params) {}
         run_test! do |response|
           expect(response.status).to eq(200)

@@ -15,6 +15,7 @@ if @recipes.present?
       json.updated_at ingredient.updated_at
       json.unit ingredient.unit
       json.amount ingredient.amount
+      json.converted_unit QuantityConverter.new(ingredient.amount).weight_converter(ingredient.unit, @request['convert_unit'])
       json.recipe_id ingredient.recipe_id
     end
 
