@@ -79,6 +79,7 @@ RSpec/EmptyExampleGroup:
     - 'spec/requests/api/categories_spec.rb'
     - 'spec/requests/api/ingredients_spec.rb'
     - 'spec/requests/api/recipes_spec.rb'
+    - 'spec/requests/api/user_ratings_spec.rb'
     - 'spec/requests/api/users_passwords_spec.rb'
     - 'spec/requests/api/users_registrations_spec.rb'
     - 'spec/requests/api/users_reset_password_requests_spec.rb'

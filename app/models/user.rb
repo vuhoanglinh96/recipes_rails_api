@@ -8,6 +8,7 @@ class User < ApplicationRecord
   # jitera-anchor-dont-touch: relations
 
   has_many :recipes, dependent: :destroy
+  has_many :user_ratings, dependent: :destroy
 
   has_many :ingredients, through: :recipes
 
@@ -47,6 +48,11 @@ class User < ApplicationRecord
 
     def reset_password_within
       0.hours
+    end
+
+    def authenticate(email, password)
+      user = User.find_by(email: email)
+      user&.valid_password?(password) ? user : nil
     end
   end
 end

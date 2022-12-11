@@ -4,6 +4,7 @@ class Recipe < ApplicationRecord
   # jitera-anchor-dont-touch: relations
 
   has_many :ingredients, dependent: :destroy
+  has_many :user_ratings, dependent: :destroy
 
   belongs_to :category
 
@@ -26,6 +27,11 @@ class Recipe < ApplicationRecord
   validates :difficulty, presence: true
 
   accepts_nested_attributes_for :ingredients
+
+  scope :search_by_title, ->(title) { where('title LIKE ?', "%#{title}%") if title.present? }
+  scope :search_by_start_time, ->(start_time) { where('CAST(time AS UNSIGNED) >= CAST(? AS UNSIGNED)', start_time) if start_time.present? }
+  scope :search_by_end_time, ->(end_time) { where('CAST(time AS UNSIGNED) <= CAST(? AS UNSIGNED)', end_time) if end_time.present? }
+  scope :search_by_difficulty, ->(difficulty) { where(difficulty: difficulty) if difficulty.present? }
 
   def self.associations
     [:ingredients]
